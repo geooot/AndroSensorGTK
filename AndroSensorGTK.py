@@ -66,6 +66,8 @@ class OBJECT_OT_KeyButton(bpy.types.Operator):
                 obj.rotation_euler[1] += float(yRot)
                 obj.rotation_euler[2] += float(zRot)
                 obj.keyframe_insert(data_path="rotation_euler", frame=line, index=-1)
+				
+        return {'FINISHED'}
                   
 class ImportSomeData(bpy.types.Operator):
     """Choose the directory where you AndroSensor CSV file is"""
