@@ -4,10 +4,12 @@ import math
 fp = ""
 
 bl_info = {
-  "name": "AndroSensor GTK - @fschoenfeldt mod",
-  "category": "Animation",
-  "blender": (2, 80, 0) # @fschoenfeldt: bump blender version to 2.80
+    "name": "AndroSensor GTK - @fschoenfeldt mod",
+    "category": "Animation",
+    "blender": (2, 80, 0)  # @fschoenfeldt: bump blender version to 2.80
 }
+
+
 class Panel(bpy.types.Panel):
     """AndroSensor Panel"""
     bl_label = "AndroSensor GTK"
@@ -15,7 +17,6 @@ class Panel(bpy.types.Panel):
     bl_space_type = 'PROPERTIES'
     bl_region_type = 'WINDOW'
     bl_context = "object"
-
 
     def draw(self, context):
         layout = self.layout
@@ -36,21 +37,19 @@ class Panel(bpy.types.Panel):
             row.operator("convert.run")
 
 
-
-
-
 class OBJECT_OT_KeyButton(bpy.types.Operator):
     """reads user-inputed csv file and generates animation (ikr reeeeeaaal coool)"""
     bl_idname = "convert.run"
     bl_label = "Add Keyframes"
     fn = bpy.props.StringProperty()
+
     def execute(self, context):
         global fp
         results = []
         obj = context.object
         with open(fp, newline='') as inputfile:
-        	for row in csv.reader(inputfile):
-        		results.append(row)
+            for row in csv.reader(inputfile):
+                results.append(row)
 
         line = 0
 
@@ -60,18 +59,20 @@ class OBJECT_OT_KeyButton(bpy.types.Operator):
                 currentFrame = str(x)
                 currentFrame = currentFrame.replace("['", "")
                 currentFrame = currentFrame.replace("']", "")
-        #        print(currentFrame)
-                xRot, yRot, zRot,_,_ = currentFrame.split(';')
+                # print(currentFrame)
+                xRot, yRot, zRot, _, _ = currentFrame.split(';')
                 print(xRot + " " + yRot + " " + zRot)
-                xRot =  (math.radians(float(xRot)*30))/24 # @fschoenfeldt: increased value
-                yRot = (math.radians(float(yRot))*30)/24 # @fschoenfeldt: increased value
-                zRot = (math.radians(float(zRot))*30)/24 # @fschoenfeldt: increased value
+                xRot = (math.radians(float(xRot) * 30)) / 24 # @fschoenfeldt: Multiply * 30 for greater Keyframe scale
+                yRot = (math.radians(float(yRot)) * 30) / 24 # @fschoenfeldt: Multiply * 30 for greater Keyframe scale
+                zRot = (math.radians(float(zRot)) * 30) / 24 # @fschoenfeldt: Multiply * 30 for greater Keyframe scale
                 obj.rotation_euler[0] += float(xRot)
                 obj.rotation_euler[1] += float(yRot)
                 obj.rotation_euler[2] += float(zRot)
-                obj.keyframe_insert(data_path="rotation_euler", frame=line, index=-1)
+                obj.keyframe_insert(
+                    data_path="rotation_euler", frame=line, index=-1)
 
         return {'FINISHED'}
+
 
 class ImportSomeData(bpy.types.Operator):
     """Choose the directory where you AndroSensor CSV file is"""
@@ -94,17 +95,23 @@ class ImportSomeData(bpy.types.Operator):
         return {'RUNNING_MODAL'}
 
 
+classes = (
+    Panel,
+    OBJECT_OT_KeyButton,
+    ImportSomeData,
+)
+register, unregister = bpy.utils.register_classes_factory(classes)
 # !TODO rewrite register/unregister functions to meet blender 2.80 standards
 # see https://wiki.blender.org/wiki/Reference/Release_Notes/2.80/Python_API/Addons
+"""
 def register():
     bpy.utils.register_module(__name__)
-
 
 
 def unregister():
     bpy.utils.unregister_module(__name__)
 
 
-
 if __name__ == "__main__":
     register()
+"""
