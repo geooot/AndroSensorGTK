@@ -4,7 +4,7 @@ import math
 fp = ""
 
 bl_info = {
-    "name": "AndroSensor GTK - @fschoenfeldt mod",
+    "name": "AndroSensor GTK - @fschoenfeldt Blender 2.80 Port",
     "category": "Animation",
     "blender": (2, 80, 0)  # @fschoenfeldt: bump blender version to 2.80
 }
