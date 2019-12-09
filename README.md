@@ -18,7 +18,7 @@ A Blender plugin that uses phone gyroscope data as keyframes
 
 ### Steps in Blender
 1. Just install the plugin as you install any other plugin:
-  1. Download the [py file (direct link)](https://raw.githubusercontent.com/fschoenfeldt/AndroSensorGTK/master/AndroSensorGTK.py)
+  1. Download the [py file (direct link)](https://raw.githubusercontent.com/geooot/AndroSensorGTK/master/AndroSensorGTK.py)
   2. In Blender, go to `Edit -> Preferences -> Addons -> Install...`
   3. Choose the py file
 2. In the Objects panel, scroll down to "AndroSensor GTK"
