@@ -1,0 +1,8 @@
+title: AndrosensorGTK
+description: A Blender plugin that uses phone gyroscope data as keyframes
+google_analytics: 
+show_downloads: true
+theme: jekyll-theme-cayman
+
+gems:
+  - jekyll-mentions
