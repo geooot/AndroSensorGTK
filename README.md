@@ -1,6 +1,5 @@
-# AndroSensorGTK (@fschoenfeldt Blender 2.80 Port)
-## Intro
-This is a ported version of [AndroSensorGTK](https://github.com/geooot/AndroSensorGTK) that only worked in Blender <2.80, so I made some changes to make it work in Blender 2.80. I also increased the scale of the actual imported keyframes `(AndroSensorGTK.py:65-67)` because for me, the keyframes were barely visible.
+# AndroSensorGTK
+A Blender plugin that uses phone gyroscope data as keyframes
 
 ## Get it running
 ### Steps on your phone
@@ -37,13 +36,8 @@ AndroSensorGTK does not work with accelerometer (or any other sensors than the g
 
 **I have a feature request or issues**
 
-If the issue/request is not regarding the port itself, please refer to [the original GitHub of AndroSensorGTK]((https://github.com/geooot/AndroSensorGTK)) as this is just a port.
+Please contribute!
 
-## Original Description
-```
-A Blender plugin that uses phone gyroscope data as keyframes
-
-
-Requires The AndroSensor android app made by FivAsim
-https://play.google.com/store/apps/details?id=com.fivasim.androsensor&hl=en
-```
+## Contributors
+- [@fschoenfeldt](https://github.com/fschoenfeldt)
+- [@geooot](https://github.com/geooot)
